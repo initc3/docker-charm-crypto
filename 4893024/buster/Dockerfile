@@ -1,6 +1,7 @@
 FROM python:3.8.0-buster
 
 ENV COMMIT_HASH "48930240573d87d1b06d7504cff41916ce40d28d"
+ENV PBC_TAG "0.5.14-buster"
 
 ENV PYTHONUNBUFFERED 1
 
@@ -14,8 +15,16 @@ ENV LD_LIBRARY_PATH /usr/local/lib
 ENV LIBRARY_INCLUDE_PATH /usr/local/include
 
 # PBC
-COPY --from=sbellem/pbc:0.5.14-buster /usr/local/include/pbc /usr/local/include/pbc
-COPY --from=sbellem/pbc:0.5.14-buster /usr/local/lib/libpbc.* /usr/local/lib/
+COPY --from=sbellem/pbc:$PBC_TAG \
+                /usr/local/include/pbc \
+                /usr/local/include/pbc
+COPY --from=sbellem/pbc:$PBC_TAG \
+                /usr/local/lib/libpbc.so.1.0.0  \
+                /usr/local/lib/libpbc.so.1.0.0
+RUN set -ex \
+    && cd /usr/local/lib \
+    && ln -s libpbc.so.1.0.0 libpbc.so \
+    && ln -s libpbc.so.1.0.0 libpbc.so.1
 
 # Setup virtualenv
 ENV PYTHON_LIBRARY_PATH /opt/venv
