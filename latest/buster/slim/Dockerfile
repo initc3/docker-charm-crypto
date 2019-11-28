@@ -1,7 +1,5 @@
 FROM python:3.8.0-slim-buster
 
-ENV PBC_TAG "0.5.14-slim-buster"
-
 ENV PYTHONUNBUFFERED 1
 
 ENV LIBRARY_PATH /usr/local/lib
@@ -9,10 +7,10 @@ ENV LD_LIBRARY_PATH /usr/local/lib
 ENV LIBRARY_INCLUDE_PATH /usr/local/include
 
 # PBC
-COPY --from=sbellem/pbc:$PBC_TAG \
+COPY --from=sbellem/pbc:0.5.14-slim-buster \
 				/usr/local/include/pbc \
 				/usr/local/include/pbc
-COPY --from=sbellem/pbc:$PBC_TAG \
+COPY --from=sbellem/pbc:0.5.14-slim-buster \
                 /usr/local/lib/libpbc.so.1.0.0 \
                 /usr/local/lib/libpbc.so.1.0.0
 RUN set -ex \
