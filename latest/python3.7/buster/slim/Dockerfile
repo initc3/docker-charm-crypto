@@ -7,10 +7,10 @@ ENV LD_LIBRARY_PATH /usr/local/lib
 ENV LIBRARY_INCLUDE_PATH /usr/local/include
 
 # PBC
-COPY --from=sbellem/pbc:0.5.14-slim-buster \
+COPY --from=initc3/pbc:0.5.14-slim-buster \
 				/usr/local/include/pbc \
 				/usr/local/include/pbc
-COPY --from=sbellem/pbc:0.5.14-slim-buster \
+COPY --from=initc3/pbc:0.5.14-slim-buster \
                 /usr/local/lib/libpbc.so.1.0.0 \
                 /usr/local/lib/libpbc.so.1.0.0
 RUN set -ex \
