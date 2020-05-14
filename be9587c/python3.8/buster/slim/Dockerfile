@@ -1,4 +1,4 @@
-FROM python:3.8.0-slim-buster
+FROM python:3.8.2-slim-buster
 
 ENV COMMIT_HASH "be9587ccdd4d61c591fb50728ebf2a4690a2064f"
 

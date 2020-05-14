@@ -1,4 +1,4 @@
-FROM python:3.8.0-buster
+FROM python:3.8.2-buster
 
 ENV COMMIT_HASH "48930240573d87d1b06d7504cff41916ce40d28d"
 
